@@ -45,7 +45,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.low);
     final response = await http.get(Uri.parse(
-        'http://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&appid=$weatherApiKey'));
+        'http://api.openweathermap.org/data/2.5/weather?lat=${position.latitude}&lon=${position.longitude}&units=metric&appid=$weatherApiKey'));
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
       print(data);
@@ -159,7 +159,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
               ),
               SizedBox(height: 10),
               Text(
-                '${_temperature}°',
+                '${_temperature}°C',
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
