@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Weather App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
       ),
       home: WeatherScreen(),
     );
@@ -105,12 +104,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Widget build(BuildContext context) {
     String googleApiKey = '';
     String mapUrl =
-        'https://maps.googleapis.com/maps/api/staticmap?center=$_latitude,$_longitude&zoom=14&size=400x400&key=$googleApiKey';
+        'https://maps.googleapis.com/maps/api/staticmap?center=$_latitude,$_longitude&markers=$_latitude,$_longitude&zoom=20&size=600x300&key=$googleApiKey';
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Weather App'),
         centerTitle: true,
+        backgroundColor: Colors.transparent, // Make the app bar transparent
+        elevation: 0, // Remove the app bar shadow
       ),
       body: Container(
         decoration: BoxDecoration(
